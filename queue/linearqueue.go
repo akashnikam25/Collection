@@ -53,8 +53,25 @@ func enterElement() (element int) {
 	return
 }
 func main() {
+	// choice := 1 //by default 1 value we set it
+	// q := &queue{}
+	// for choice != 0 {
+	// 	switch choice {
+	// 	case 1:
+	// 		fmt.Println("Enter element to add")
+	// 		q.enqueue(enterElement())
+	// 	case 2:
+	// 		q.dequeue()
+	// 	case 3:
+	// 		fmt.Println("Print all queue")
+	// 		q.print()
+	// 	}
+	// 	choice = enterChoice()
+	// 	fmt.Println("choice", choice)
+	// }
+
 	choice := 1 //by default 1 value we set it
-	q := &queue{}
+	q := &circularQueue{}
 	for choice != 0 {
 		switch choice {
 		case 1:
@@ -67,6 +84,33 @@ func main() {
 			q.print()
 		}
 		choice = enterChoice()
-		fmt.Println("choice", choice)
+		//fmt.Println("choice", choice)
 	}
+}
+
+type circularQueue struct {
+	rear  int
+	front int
+	size  int
+	arr   []int
+}
+
+func (q *circularQueue) enqueue(val int) {
+	if q.front == -1 {
+		q.rear = 0
+		q.front = 0
+		q.arr[q.rear] = val
+	} else if q.front == 0 && q.rear == q.size-1 {
+		q.rear++
+		q.arr[q.rear] = val
+	} else if q.front == 0 {
+
+	}
+}
+func (q *circularQueue) dequeue() {
+
+}
+
+func (q *circularQueue) print() {
+
 }
